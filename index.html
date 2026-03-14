@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The South PickleBall Arena – Jaipur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   BRAND COLORS from logo
+   Navy  #1B3A6B  Green #2D7D46  Red #C8293A
+══════════════════════════════════════════ */
+:root{
+  --navy:#1B3A6B; --nd:#0D1E3A; --nm:#142D56; --nl:#1e3f70;
+  --green:#2D7D46; --gl:#38994F; --gh:#4DB868;
+  --red:#C8293A; --rl:#E03042;
+  --white:#FFFFFF; --off:#E8F0FF; --muted:rgba(255,255,255,0.55);
+  --border:rgba(255,255,255,0.1);
+  --fn-d:'Anton',sans-serif;
+  --fn-c:'Barlow Condensed',sans-serif;
+  --fn-b:'Barlow',sans-serif;
+  --fn-h:'Oswald',sans-serif;
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--nd);color:var(--white);font-family:var(--fn-b);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+::selection{background:var(--green);color:#fff;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--nd);}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:4px;}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:76px;padding:0 4%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:transparent;border-bottom:1px solid transparent;
+  transition:height .35s,background .35s,border-color .35s,box-shadow .35s;
+}
+#nav.solid{
+  height:64px;
+  background:rgba(13,30,58,.97);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom-color:rgba(255,255,255,.08);
+  box-shadow:0 4px 30px rgba(0,0,0,.5);
+}
+.nav-brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nav-logo-img{
+  width:48px;height:48px;border-radius:50%;object-fit:cover;
+  border:2.5px solid rgba(255,255,255,.3);
+  transition:width .3s,height .3s;
+  flex-shrink:0;
+}
+#nav.solid .nav-logo-img{width:40px;height:40px;}
+.nav-wm{display:flex;flex-direction:column;gap:1px;}
+.nav-wm-main{
+  font-family:var(--fn-c);font-weight:900;font-size:1.1rem;
+  letter-spacing:.5px;line-height:1.1;
+  background:linear-gradient(90deg,#fff 0%,var(--gh) 50%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;background-size:200%;
+  animation:shimmer 5s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+.nav-wm-sub{
+  font-family:var(--fn-h);font-size:.6rem;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gh);opacity:.75;
+}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-links a{
+  font-family:var(--fn-h);font-size:.73rem;letter-spacing:1.8px;
+  text-transform:uppercase;color:rgba(255,255,255,.6);
+  padding:8px 11px;border-radius:3px;position:relative;transition:color .2s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:4px;left:50%;right:50%;
+  height:2px;background:var(--gh);border-radius:2px;
+  transition:left .25s,right .25s;
+}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after{left:11px;right:11px;}
+
+/* GLOWING NAV BOOK BTN */
+.btn-nav-book{
+  font-family:var(--fn-c);font-size:.82rem;font-weight:900;
+  letter-spacing:2px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--green),var(--gl));
+  color:#fff;padding:12px 26px;border-radius:4px;
+  border:none;cursor:pointer;position:relative;overflow:hidden;
+  flex-shrink:0;
+  animation:navGlow 2.5s ease-in-out infinite;
+  transition:transform .2s;
+}
+@keyframes navGlow{
+  0%,100%{box-shadow:0 0 16px rgba(45,125,70,.55),0 0 32px rgba(45,125,70,.25);}
+  50%{box-shadow:0 0 26px rgba(77,184,104,.85),0 0 50px rgba(45,125,70,.45);}
+}
+.btn-nav-book::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:translateX(-100%);animation:sweep 2.8s ease-in-out infinite;
+}
+@keyframes sweep{0%,40%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.btn-nav-book:hover{transform:translateY(-2px) scale(1.04);}
+
+/* CALL NOW NAV BUTTON */
+.btn-nav-call{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fn-c);font-size:.82rem;font-weight:900;
+  letter-spacing:2px;text-transform:uppercase;
+  background:transparent;
+  color:#fff;padding:10px 20px;border-radius:4px;
+  border:2px solid rgba(255,255,255,.35);
+  cursor:pointer;flex-shrink:0;
+  transition:border-color .25s,background .25s,box-shadow .25s,transform .25s;
+  white-space:nowrap;
+  text-decoration:none;
+}
+.btn-nav-call:hover{
+  border-color:var(--red);
+  color:var(--white);
+  background:rgba(200,41,58,.15);
+  box-shadow:0 0 18px rgba(200,41,58,.35),0 4px 14px rgba(0,0,0,.3);
+  transform:translateY(-2px);
+}
+.call-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4eff80;flex-shrink:0;
+  animation:callPulse 1.8s ease-in-out infinite;
+  box-shadow:0 0 6px #4eff80;
+}
+@keyframes callPulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.5;}}
+@media(max-width:900px){.btn-nav-call{display:none;}}
+
+/* Hamburger */
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;cursor:pointer;}
+.hbg span{width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s;display:block;}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-nav{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:999;
+  background:rgba(13,30,58,.99);border-bottom:3px solid var(--green);
+  flex-direction:column;
+  transform:translateY(-110%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.mob-nav.open{transform:translateY(0);}
+.mob-nav a{
+  display:block;padding:16px 5%;
+  font-family:var(--fn-h);font-size:.9rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s,padding-left .2s,background .2s;
+}
+.mob-nav a:hover{color:#fff;padding-left:calc(5% + 10px);background:rgba(45,125,70,.08);}
+.mob-nav .mob-book{color:var(--gh);border:none;font-weight:700;}
+
+/* ─── HERO ─── */
+#home{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.hvw{position:absolute;inset:0;z-index:0;}
+.hvw video{width:100%;height:100%;object-fit:cover;display:block;}
+/* Layered overlays */
+.ho1{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(13,30,58,.88) 0%,rgba(13,30,58,.65) 50%,rgba(27,58,107,.5) 100%);}
+.ho2{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 25%,rgba(13,30,58,.5) 100%);}
+.hd-bar{position:absolute;left:0;top:0;bottom:0;z-index:3;width:6px;background:linear-gradient(180deg,var(--green) 0%,var(--navy) 50%,var(--red) 100%);}
+.hgrid{
+  position:absolute;inset:0;z-index:3;opacity:.028;
+  background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+/* PICKLEBALL floating graphics — CSS only, no JS */
+.pb-float{position:absolute;z-index:4;pointer-events:none;}
+.pb1{top:14%;right:7%;width:65px;animation:pbf1 7s ease-in-out infinite;}
+.pb2{bottom:22%;left:5%;width:48px;animation:pbf2 9s ease-in-out infinite;}
+.pb3{top:58%;right:14%;width:34px;animation:pbf1 6.5s ease-in-out infinite .6s;}
+.pb4{top:28%;left:10%;width:42px;animation:pbf2 8.5s ease-in-out infinite 1.2s;}
+.pad1{top:16%;right:2%;width:85px;animation:padf1 10s ease-in-out infinite;opacity:.16;}
+.pad2{bottom:22%;left:1%;width:70px;animation:padf2 12s ease-in-out infinite;opacity:.14;}
+@keyframes pbf1{0%,100%{transform:translateY(0) rotate(0deg);}35%{transform:translateY(-22px) rotate(125deg);}70%{transform:translateY(-12px) rotate(250deg);}}
+@keyframes pbf2{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-26px) rotate(180deg);}}
+@keyframes padf1{0%,100%{transform:translateY(0) rotate(-20deg);}50%{transform:translateY(-18px) rotate(-13deg);}}
+@keyframes padf2{0%,100%{transform:translateY(0) rotate(16deg);}50%{transform:translateY(-20px) rotate(24deg);}}
+
+.hbody{
+  position:relative;z-index:5;text-align:center;
+  width:100%;max-width:1100px;margin:0 auto;
+  padding:130px 5% 100px;
+}
+.h-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fn-h);font-size:.72rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gh);margin-bottom:22px;
+}
+.h-badge::before,.h-badge::after{content:'';width:32px;height:2px;background:var(--gh);}
+.hero-h1{
+  font-family:var(--fn-d);
+  font-size:clamp(4rem,11vw,11rem);
+  line-height:.88;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:22px;
+}
+.hl1{display:block;color:#fff;}
+.hl2{
+  display:block;
+  background:linear-gradient(90deg,var(--gh),#80ffaa,var(--gh));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:200%;animation:shimmer 3.5s linear infinite;
+  filter:drop-shadow(0 0 28px rgba(77,184,104,.45));
+}
+.hl3{
+  display:block;
+  color:rgba(255,255,255,.35);
+  font-size:.58em;letter-spacing:10px;
+}
+.h-sub{
+  font-family:var(--fn-c);font-size:clamp(1rem,2.2vw,1.4rem);
+  font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.65);margin-bottom:40px;
+}
+.h-sub em{color:var(--gh);font-style:normal;}
+.hbtns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:56px;}
+.btn-hp{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fn-c);font-size:.95rem;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--green),var(--gl));color:#fff;
+  padding:18px 42px;border-radius:4px;border:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+  box-shadow:0 6px 28px rgba(45,125,70,.45);
+}
+.btn-hp::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transform:translateX(-100%);transition:transform .5s;
+}
+.btn-hp:hover::before{transform:translateX(100%);}
+.btn-hp:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(45,125,70,.6);}
+.btn-hl{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fn-c);font-size:.95rem;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase;
+  border:2px solid rgba(255,255,255,.4);color:#fff;
+  padding:16px 36px;border-radius:4px;cursor:pointer;
+  background:rgba(255,255,255,.05);transition:all .3s;
+}
+.btn-hl:hover{border-color:#fff;background:rgba(255,255,255,.12);transform:translateY(-3px);}
+.hstats{
+  display:inline-flex;flex-wrap:wrap;justify-content:center;
+  border:1px solid rgba(255,255,255,.15);border-radius:6px;
+  overflow:hidden;background:rgba(13,30,58,.45);backdrop-filter:blur(10px);
+}
+.hst{padding:18px 36px;border-right:1px solid rgba(255,255,255,.1);text-align:center;}
+.hst:last-child{border-right:none;}
+.hst-n{font-family:var(--fn-d);font-size:2.4rem;color:#fff;display:block;line-height:1;}
+.hst-l{font-family:var(--fn-h);font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;display:block;}
+.scroll-hint{
+  position:absolute;bottom:92px;left:50%;transform:translateX(-50%);z-index:5;
+  animation:bob 2s ease-in-out infinite;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.scroll-hint span{font-family:var(--fn-h);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);}
+.s-arrow{width:16px;height:16px;border-right:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(255,255,255,.35);transform:rotate(45deg);}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-10px);}}
+
+/* STRIPE DIVIDER */
+.stripe{height:5px;background:linear-gradient(90deg,var(--green) 0%,var(--navy) 50%,var(--red) 100%);}
+
+/* ─── SECTION COMMONS ─── */
+section{position:relative;}
+.wrap{max-width:1240px;margin:0 auto;padding:100px 5%;}
+.sec-eye{
+  font-family:var(--fn-h);font-size:.72rem;letter-spacing:4px;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  color:var(--gh);margin-bottom:16px;
+}
+.sec-eye::before,.sec-eye::after{content:'';width:28px;height:2px;background:var(--green);}
+.sec-title{
+  font-family:var(--fn-d);
+  font-size:clamp(2.8rem,6.5vw,6rem);
+  text-transform:uppercase;line-height:.92;letter-spacing:1px;
+  text-align:center;margin-bottom:16px;color:#fff;
+}
+.sec-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--gh),#80ffaa,var(--gh));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;background-size:200%;animation:shimmer 3s linear infinite;
+}
+.sec-title .r{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--red),#ff8090,var(--red));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;background-size:200%;animation:shimmer 3s linear infinite;
+}
+.sec-p{
+  font-family:var(--fn-b);font-size:1.05rem;font-weight:500;
+  color:rgba(255,255,255,.7);text-align:center;
+  max-width:600px;margin:0 auto 60px;line-height:1.75;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--navy);}
+/* Premium badge */
+.court-badge-wrap{display:flex;justify-content:center;margin-bottom:56px;}
+.court-badge{
+  display:inline-flex;align-items:center;gap:16px;
+  background:linear-gradient(135deg,rgba(200,41,58,.18),rgba(27,58,107,.4));
+  border:1.5px solid rgba(200,41,58,.6);border-radius:50px;
+  padding:14px 36px;
+  box-shadow:0 0 30px rgba(200,41,58,.15),0 4px 20px rgba(0,0,0,.3);
+}
+.court-badge-icon{font-size:1.8rem;}
+.court-badge-title{font-family:var(--fn-d);font-size:1.5rem;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.court-badge-sub{font-family:var(--fn-h);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-top:3px;}
+
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+/* Logo scene */
+.about-logo-scene{position:relative;display:flex;justify-content:center;align-items:center;padding:40px;}
+.lor{
+  position:absolute;
+  width:clamp(280px,32vw,420px);height:clamp(280px,32vw,420px);
+  border:1px solid rgba(45,125,70,.25);border-radius:50%;
+  animation:spinR 22s linear infinite;
+}
+.lor::before,.lor::after{
+  content:'';position:absolute;border-radius:50%;
+  width:12px;height:12px;background:var(--gh);
+  top:-6px;left:50%;transform:translateX(-50%);
+  box-shadow:0 0 12px var(--gh);
+}
+.lor::after{top:auto;bottom:-6px;background:var(--red);box-shadow:0 0 12px var(--red);}
+.lir{
+  position:absolute;
+  width:clamp(190px,22vw,290px);height:clamp(190px,22vw,290px);
+  border:1px solid rgba(255,255,255,.08);border-radius:50%;
+  animation:spinR 14s linear infinite reverse;
+}
+@keyframes spinR{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ali{
+  width:clamp(160px,18vw,260px);height:clamp(160px,18vw,260px);
+  border-radius:50%;object-fit:cover;position:relative;z-index:2;
+  border:3px solid rgba(255,255,255,.2);
+  filter:drop-shadow(0 0 40px rgba(27,58,107,.7));
+  animation:floatLogo 5s ease-in-out infinite;
+}
+@keyframes floatLogo{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+.orb{position:absolute;border-radius:50%;z-index:3;}
+.orb1{width:14px;height:14px;background:radial-gradient(circle at 35% 35%,#fff,#bbb);animation:orb1a 7s linear infinite;box-shadow:0 0 8px rgba(255,255,255,.5);}
+.orb2{width:9px;height:9px;background:var(--gh);animation:orb1a 10s linear infinite reverse;box-shadow:0 0 8px var(--gh);}
+.orb3{width:8px;height:8px;background:var(--red);animation:orb2a 13s linear infinite;box-shadow:0 0 8px var(--red);}
+@keyframes orb1a{0%{transform:rotate(0deg) translateX(clamp(120px,14vw,185px)) rotate(0deg);}100%{transform:rotate(360deg) translateX(clamp(120px,14vw,185px)) rotate(-360deg);}}
+@keyframes orb2a{0%{transform:rotate(0deg) translateX(clamp(95px,11vw,150px)) rotate(0deg);}100%{transform:rotate(360deg) translateX(clamp(95px,11vw,150px)) rotate(-360deg);}}
+
+.about-text .sec-title,.about-text .sec-eye{text-align:left;justify-content:flex-start;}
+.about-text .sec-eye::before{display:none;}
+.about-text .sec-p{text-align:left;margin-left:0;margin-bottom:28px;}
+
+/* Court notice */
+.court-note{
+  display:flex;align-items:center;gap:14px;
+  background:linear-gradient(90deg,rgba(200,41,58,.12),rgba(13,30,58,.5));
+  border-left:4px solid var(--red);border-radius:0 6px 6px 0;
+  padding:16px 20px;margin-bottom:28px;
+}
+.cn-icon{font-size:1.6rem;flex-shrink:0;}
+.cn-text{font-family:var(--fn-h);font-size:.85rem;font-weight:600;letter-spacing:.8px;color:#fff;line-height:1.5;}
+.cn-text span{color:var(--red);}
+
+/* Feature grid */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.feat-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-left:3px solid var(--green);
+  border-radius:4px;padding:16px;
+  transition:background .25s,border-left-color .25s,transform .25s,box-shadow .25s;
+}
+.feat-card:hover{background:rgba(45,125,70,.14);border-left-color:var(--gh);transform:translateY(-4px);box-shadow:0 8px 24px rgba(45,125,70,.2);}
+.feat-ic{font-size:1.5rem;margin-bottom:8px;}
+.feat-nm{font-family:var(--fn-h);font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:3px;}
+.feat-ds{font-family:var(--fn-b);font-size:.8rem;font-weight:500;color:rgba(255,255,255,.6);}
+
+/* Stats */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid rgba(255,255,255,.1);border-radius:6px;overflow:hidden;
+}
+.sbox{padding:22px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.18);transition:background .25s;}
+.sbox:hover{background:rgba(45,125,70,.16);}
+.sbox:last-child{border-right:none;}
+.sn{font-family:var(--fn-d);font-size:2.8rem;color:#fff;line-height:1;}
+.sl{font-family:var(--fn-h);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px;}
+
+/* ─── PRICING ─── */
+#pricing{background:var(--nd);}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:6px;overflow:hidden;}
+.pc{background:var(--nm);padding:48px 42px;position:relative;overflow:hidden;transition:background .3s;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--gl));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.pc:hover::before,.pc.hot::before{transform:scaleX(1);}
+.pc:hover{background:var(--nl);}
+.pc.hot{background:var(--navy);}
+.pc-bg{position:absolute;bottom:-10px;right:-10px;font-family:var(--fn-d);font-size:14rem;color:rgba(255,255,255,.022);pointer-events:none;line-height:1;}
+.pbadge{display:inline-flex;align-items:center;gap:6px;font-family:var(--fn-c);font-size:.72rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:3px;margin-bottom:20px;}
+.pbadge.peak{background:var(--red);color:#fff;}
+.pbadge.off{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);}
+.pname{font-family:var(--fn-d);font-size:2.4rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;color:#fff;}
+.ptag{font-family:var(--fn-b);font-size:.88rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:24px;}
+.pprice{display:flex;align-items:flex-start;gap:4px;margin-bottom:8px;}
+.pcur{font-family:var(--fn-c);font-size:1.6rem;font-weight:700;color:rgba(255,255,255,.55);margin-top:10px;}
+.pamt{font-family:var(--fn-d);font-size:6rem;font-weight:400;line-height:1;color:#fff;}
+.pper{font-family:var(--fn-h);font-size:.8rem;font-weight:500;color:rgba(255,255,255,.45);align-self:flex-end;padding-bottom:12px;letter-spacing:1px;}
+.p-old{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.p-old span:first-child{font-family:var(--fn-c);font-size:.9rem;font-weight:700;color:rgba(255,255,255,.35);text-decoration:line-through;}
+.p-save{background:var(--gh);color:var(--nd);font-family:var(--fn-c);font-size:.65rem;font-weight:900;letter-spacing:1px;padding:3px 10px;border-radius:50px;text-transform:uppercase;}
+.pslots{margin:0 0 24px;padding:16px;background:rgba(0,0,0,.25);border-radius:4px;display:flex;flex-direction:column;gap:10px;}
+.pslot{display:flex;align-items:center;gap:10px;font-family:var(--fn-b);font-size:.9rem;font-weight:600;color:rgba(255,255,255,.75);}
+.pslot .bl{width:3px;height:22px;border-radius:2px;flex-shrink:0;background:var(--green);}
+.pslot.r .bl{background:var(--red);}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.pfeats li{display:flex;align-items:center;gap:12px;font-family:var(--fn-b);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.7);}
+.pfeats li::before{content:'';width:20px;height:2px;background:var(--green);flex-shrink:0;border-radius:2px;}
+
+/* ─── BUTTONS ─── */
+.btn-g{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--fn-c);font-size:.9rem;font-weight:900;
+  letter-spacing:2.5px;text-transform:uppercase;
+  background:var(--green);color:#fff;
+  padding:16px 32px;border-radius:4px;border:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:background .28s,transform .28s,box-shadow .28s;width:100%;
+}
+.btn-g::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);transition:transform .5s;}
+.btn-g:hover::after{transform:translateX(100%);}
+.btn-g:hover{background:var(--gl);transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,125,70,.45);}
+
+/* HUDDLEPLAY BUTTON with logo */
+.btn-huddle{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  font-family:var(--fn-c);font-size:.9rem;font-weight:900;
+  letter-spacing:2.5px;text-transform:uppercase;
+  background:#1565C0;color:#fff;
+  padding:14px 32px;border-radius:4px;border:none;cursor:pointer;
+  transition:background .28s,transform .28s,box-shadow .28s;width:100%;
+  box-shadow:0 4px 20px rgba(21,101,192,.45);
+}
+.btn-huddle:hover{background:#1976D2;transform:translateY(-2px);box-shadow:0 8px 28px rgba(21,101,192,.6);}
+.btn-huddle img,.huddle-logo-img{width:28px;height:28px;object-fit:contain;border-radius:4px;flex-shrink:0;}
+
+/* ─── TIMING ─── */
+#timing{background:var(--navy);}
+.timing-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:start;}
+.big-clock{font-family:var(--fn-d);font-size:clamp(4rem,8vw,8.5rem);line-height:.93;text-transform:uppercase;}
+.big-clock .from{color:#fff;}
+.big-clock .sep{color:var(--gh);font-size:.5em;display:inline-block;margin:0 6px;}
+.big-clock .to{color:rgba(255,255,255,.3);}
+.big-clock .tsub{display:block;font-family:var(--fn-h);font-size:.22em;letter-spacing:5px;color:rgba(255,255,255,.45);font-weight:600;margin-top:10px;}
+.days-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:26px 0;}
+.day{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:14px 4px;text-align:center;transition:background .25s,border-color .25s,transform .25s,box-shadow .25s;cursor:default;}
+.day:hover,.day.on{background:rgba(45,125,70,.18);border-color:rgba(77,184,104,.5);transform:translateY(-4px);box-shadow:0 8px 20px rgba(45,125,70,.2);}
+.day-n{font-family:var(--fn-h);font-size:.62rem;letter-spacing:2px;color:var(--gh);text-transform:uppercase;margin-bottom:6px;}
+.day-ic{font-size:1.1rem;}
+.day-s{font-family:var(--fn-c);font-size:.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:6px;}
+.day.on .day-s{color:var(--gh);}
+.tcards{display:flex;flex-direction:column;gap:14px;}
+.tcard{background:var(--nd);border-radius:4px;padding:20px 22px;border-left:4px solid var(--green);transition:background .25s,border-left-color .25s;}
+.tcard:hover{background:rgba(255,255,255,.04);border-left-color:var(--gh);}
+.tcard.r{border-left-color:var(--red);}
+.tcard.w{border-left-color:rgba(255,255,255,.2);}
+.t-lbl{font-family:var(--fn-h);font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:5px;}
+.t-val{font-family:var(--fn-d);font-size:1.6rem;color:#fff;}
+.book-row{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+.bk{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:4px;
+  font-family:var(--fn-c);font-size:.84rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+  transition:background .25s,transform .25s;
+}
+.bk svg,.bk img{width:22px;height:22px;flex-shrink:0;}
+.bk img{border-radius:4px;object-fit:contain;}
+.bk.wa{background:rgba(37,211,102,.1);border:1.5px solid rgba(37,211,102,.3);color:#25D366;}
+.bk.wa:hover{background:rgba(37,211,102,.2);transform:translateX(5px);}
+.bk.hp{background:rgba(21,101,192,.18);border:1.5px solid rgba(21,101,192,.45);color:#90caff;}
+.bk.hp:hover{background:rgba(21,101,192,.32);transform:translateX(5px);}
+
+/* ─── GALLERY ─── */
+#gallery{background:var(--nd);}
+.gal-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;}
+.gi{overflow:hidden;position:relative;border-radius:3px;cursor:pointer;}
+.gi:nth-child(1){grid-column:1/7;aspect-ratio:16/9;}
+.gi:nth-child(2){grid-column:7/13;aspect-ratio:16/9;}
+.gi:nth-child(3){grid-column:1/7;aspect-ratio:16/9;}
+.gi:nth-child(4){grid-column:7/13;aspect-ratio:16/9;}
+.gi-inner{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;background:var(--nm);
+  transition:transform .5s cubic-bezier(.2,0,.2,1);
+}
+.gi:hover .gi-inner{transform:scale(1.07);}
+.gi-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,30,58,.95) 0%,rgba(13,30,58,.1) 60%,transparent 100%);opacity:0;transition:opacity .35s;z-index:2;}
+.gi:hover .gi-ov{opacity:1;}
+.gi-info{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:18px;transform:translateY(100%);transition:transform .35s cubic-bezier(.2,0,.2,1);}
+.gi:hover .gi-info{transform:translateY(0);}
+.gi-nm{font-family:var(--fn-c);font-size:1rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.gi-sub{font-family:var(--fn-b);font-size:.78rem;font-weight:500;color:rgba(255,255,255,.65);margin-top:3px;}
+.gi-cat{position:absolute;top:12px;left:12px;z-index:4;font-family:var(--fn-c);font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:3px;background:var(--green);color:#fff;}
+
+/* ─── LIGHTBOX ─── */
+.lightbox{position:fixed;inset:0;z-index:10000;background:rgba(7,18,38,.98);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.lightbox.on{opacity:1;pointer-events:all;}
+.lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5);transform:scale(.9);transition:transform .3s;}
+.lightbox.on .lightbox-img{transform:scale(1);}
+.lightbox-close{position:absolute;top:20px;right:20px;width:44px;height:44px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;color:#fff;transition:background .2s,transform .2s;z-index:10001;}
+.lightbox-close:hover{background:var(--red);transform:rotate(90deg);}
+.lightbox-caption{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-family:var(--fn-c);font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.5);padding:10px 24px;border-radius:4px;}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials{background:var(--navy);}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.tc{background:var(--nd);padding:36px 30px;border-top:4px solid transparent;position:relative;overflow:hidden;transition:border-top-color .3s,background .3s,transform .3s,box-shadow .3s;}
+.tc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(45,125,70,.08),transparent);opacity:0;transition:opacity .3s;}
+.tc:hover{border-top-color:var(--green);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.35);}
+.tc:hover::before{opacity:1;}
+.tc-q{font-family:Georgia,serif;font-size:5rem;line-height:.8;color:rgba(45,125,70,.22);margin-bottom:14px;}
+.tc-text{font-family:var(--fn-b);font-size:.95rem;font-weight:400;color:rgba(255,255,255,.72);line-height:1.8;font-style:italic;margin-bottom:22px;}
+.tc-auth{display:flex;align-items:center;gap:12px;}
+.tc-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fn-d);font-size:1.1rem;border:2px solid rgba(255,255,255,.15);flex-shrink:0;}
+.tc-nm{font-family:var(--fn-h);font-size:.9rem;font-weight:700;letter-spacing:1px;color:#fff;}
+.tc-rl{font-family:var(--fn-b);font-size:.75rem;font-weight:400;color:rgba(255,255,255,.45);}
+.tc-st{color:var(--red);font-size:.82rem;letter-spacing:2.5px;margin-top:3px;}
+
+/* ─── CONTACT ─── */
+#contact{background:var(--nd);}
+.cg{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
+.c-grp{margin-bottom:26px;}
+.c-grp-h{font-family:var(--fn-h);font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--gh);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1);}
+.c-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:padding-left .2s;}
+.c-row:hover{padding-left:6px;}
+.c-row:last-child{border-bottom:none;}
+.c-ic{font-size:1rem;margin-top:2px;width:20px;text-align:center;flex-shrink:0;}
+.c-val{font-family:var(--fn-b);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.72);line-height:1.7;}
+.c-val a{color:var(--gh);transition:color .2s;}
+.c-val a:hover{color:#fff;}
+
+/* Animated social icons */
+.soc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.soc{
+  display:flex;align-items:center;gap:10px;padding:13px 14px;border-radius:4px;
+  font-family:var(--fn-c);font-size:.8rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  transition:transform .3s,box-shadow .3s,background .3s,border-color .3s;
+}
+.soc svg,.soc img{width:20px;height:20px;flex-shrink:0;transition:transform .3s;border-radius:3px;object-fit:contain;}
+.soc:hover{transform:translateY(-3px) scale(1.03);}
+.soc:hover svg,.soc:hover img{transform:scale(1.2) rotate(-5deg);}
+.soc.fb{background:rgba(24,119,242,.1);border:1px solid rgba(24,119,242,.28);color:#5fa3ff;}
+.soc.fb:hover{box-shadow:0 6px 20px rgba(24,119,242,.35);border-color:rgba(24,119,242,.65);background:rgba(24,119,242,.2);}
+.soc.ig{background:rgba(228,64,95,.1);border:1px solid rgba(228,64,95,.28);color:#f478a0;}
+.soc.ig:hover{box-shadow:0 6px 20px rgba(228,64,95,.35);border-color:rgba(228,64,95,.65);background:rgba(228,64,95,.2);}
+.soc.gg{background:rgba(66,133,244,.1);border:1px solid rgba(66,133,244,.28);color:#80b0ff;}
+.soc.gg:hover{box-shadow:0 6px 20px rgba(66,133,244,.35);border-color:rgba(66,133,244,.65);background:rgba(66,133,244,.2);}
+.soc.wa{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.28);color:#2ed87a;}
+.soc.wa:hover{box-shadow:0 6px 20px rgba(37,211,102,.35);border-color:rgba(37,211,102,.65);background:rgba(37,211,102,.2);}
+.soc.hp{background:rgba(21,101,192,.12);border:1px solid rgba(21,101,192,.35);color:#90caff;}
+.soc.hp:hover{box-shadow:0 6px 20px rgba(21,101,192,.35);border-color:rgba(21,101,192,.65);background:rgba(21,101,192,.22);}
+@keyframes socPop{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+
+/* ─── MAP ─── */
+.map-wrap{display:flex;flex-direction:column;}
+.map-header{
+  background:linear-gradient(135deg,var(--green),var(--navy));
+  padding:18px 22px;border-radius:8px 8px 0 0;
+  display:flex;align-items:center;gap:14px;
+}
+.map-h-logo{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3);flex-shrink:0;}
+.map-h-name{font-family:var(--fn-d);font-size:1.35rem;text-transform:uppercase;letter-spacing:1px;color:#fff;line-height:1;}
+.map-h-addr{font-family:var(--fn-h);font-size:.65rem;letter-spacing:1.5px;color:rgba(255,255,255,.7);margin-top:4px;text-transform:uppercase;}
+.map-h-badge{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+  border-radius:50px;padding:7px 16px;flex-shrink:0;
+}
+.map-h-dot{width:8px;height:8px;background:#4eff80;border-radius:50%;animation:dotPulse 1.5s ease-in-out infinite;box-shadow:0 0 8px #4eff80;}
+@keyframes dotPulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:.6;}}
+.map-h-badge span{font-family:var(--fn-c);font-size:.72rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#fff;}
+.map-iframe-wrap{position:relative;aspect-ratio:16/8;overflow:hidden;}
+.map-iframe-wrap iframe{width:100%;height:100%;border:none;display:block;}
+.map-click-overlay{position:absolute;inset:0;z-index:10;cursor:pointer;background:transparent;display:flex;align-items:center;justify-content:center;text-decoration:none;}
+.map-click-overlay:hover .map-open-hint{opacity:1;transform:translateY(0);}
+.map-open-hint{background:rgba(13,30,58,.9);border:1.5px solid var(--green);color:#fff;font-family:var(--fn-c);font-size:.82rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;border-radius:4px;display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;box-shadow:0 4px 20px rgba(0,0,0,.5);}
+.map-footer{
+  background:var(--nm);padding:14px 22px;border-radius:0 0 8px 8px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.map-ft-text{font-family:var(--fn-c);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.map-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--green);color:#fff;border:none;cursor:pointer;
+  font-family:var(--fn-c);font-size:.8rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+  padding:10px 22px;border-radius:4px;
+  transition:background .25s,transform .25s;
+}
+.map-btn:hover{background:var(--gl);transform:translateY(-2px);}
+.gh-note{margin-top:12px;padding:14px 16px;background:rgba(45,125,70,.08);border:1px solid rgba(45,125,70,.2);border-radius:4px;}
+.gh-title{font-family:var(--fn-h);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gh);margin-bottom:5px;}
+.gh-text{font-family:var(--fn-b);font-size:.85rem;font-weight:500;color:rgba(255,255,255,.6);line-height:1.7;}
+
+/* ─── POPUP ─── */
+.overlay{position:fixed;inset:0;z-index:9000;background:rgba(7,18,38,.94);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.on{opacity:1;pointer-events:all;}
+.popup{background:var(--navy);border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--green);border-radius:6px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:44px;transform:translateY(24px) scale(.96);transition:transform .35s;position:relative;}
+.overlay.on .popup{transform:translateY(0) scale(1);}
+.popup-x{position:absolute;top:14px;right:14px;width:34px;height:34px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:3px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:rgba(255,255,255,.5);transition:all .2s;}
+.popup-x:hover{background:rgba(200,41,58,.18);border-color:var(--red);color:var(--red);}
+.popup-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.popup-brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;}
+.popup-bn{font-family:var(--fn-c);font-size:1rem;font-weight:900;text-transform:uppercase;line-height:1.1;color:#fff;}
+.popup-bn span{display:block;font-family:var(--fn-h);font-size:.65rem;letter-spacing:2px;color:rgba(255,255,255,.45);font-weight:500;margin-top:2px;}
+.popup-h{font-family:var(--fn-d);font-size:2rem;text-transform:uppercase;line-height:1;margin-bottom:4px;color:#fff;}
+.popup-s{font-family:var(--fn-b);font-size:.88rem;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:26px;}
+.popup-plats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px;}
+.pp{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 16px;border-radius:6px;text-align:center;transition:transform .28s,box-shadow .28s,background .28s,border-color .28s;}
+.pp.wa{background:rgba(37,211,102,.08);border:1.5px solid rgba(37,211,102,.25);}
+.pp.wa:hover{background:rgba(37,211,102,.16);border-color:#25D366;transform:translateY(-4px);box-shadow:0 8px 24px rgba(37,211,102,.18);}
+.pp.hp{background:rgba(21,101,192,.12);border:1.5px solid rgba(21,101,192,.4);}
+.pp.hp:hover{background:rgba(21,101,192,.22);border-color:#1976D2;transform:translateY(-4px);box-shadow:0 8px 24px rgba(21,101,192,.28);}
+.pp-logo-img{width:52px;height:52px;object-fit:contain;border-radius:8px;}
+.pp-n{font-family:var(--fn-c);font-size:.92rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#fff;}
+.pp-s{font-family:var(--fn-b);font-size:.72rem;font-weight:500;color:rgba(255,255,255,.45);}
+.popup-info{background:var(--nd);border-radius:4px;padding:18px;font-family:var(--fn-b);font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);line-height:2.1;}
+.popup-info strong{color:#fff;font-weight:700;}
+.popup-info .g{color:var(--gh);}
+
+/* ─── FLOATING BOOK NOW BTN ─── */
+#float-book{
+  position:fixed;bottom:58px;right:28px;z-index:800;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+#float-book.show{opacity:1;pointer-events:all;}
+.float-rings{position:absolute;width:64px;height:64px;top:0;left:50%;transform:translateX(-50%);pointer-events:none;}
+.float-ring{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);border-radius:50%;
+  border:2px solid rgba(45,125,70,.7);
+  width:64px;height:64px;
+  animation:ringOut 2.5s ease-out infinite;
+}
+.float-ring:nth-child(2){animation-delay:.8s;border-color:rgba(45,125,70,.4);}
+.float-ring:nth-child(3){animation-delay:1.6s;border-color:rgba(45,125,70,.2);}
+@keyframes ringOut{0%{transform:translate(-50%,-50%) scale(1);opacity:1;}100%{transform:translate(-50%,-50%) scale(3.2);opacity:0;}}
+/* BRAND LOGO in float button */
+.float-btn{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--nd);
+  border:3px solid var(--green);
+  cursor:pointer;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(45,125,70,.6),0 8px 30px rgba(0,0,0,.5);
+  animation:floatBounce 3s ease-in-out infinite;
+  position:relative;z-index:1;
+  transition:transform .2s,box-shadow .2s;
+  padding:0;
+}
+.float-btn img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;
+}
+.float-btn-fallback{font-size:1.6rem;}
+.float-btn:hover{transform:scale(1.12)!important;box-shadow:0 8px 32px rgba(45,125,70,.8);}
+@keyframes floatBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.float-label{
+  background:var(--nd);border:1px solid rgba(45,125,70,.45);
+  color:var(--gh);font-family:var(--fn-c);font-size:.65rem;font-weight:900;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;white-space:nowrap;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+  animation:lblBlink 2.5s ease-in-out infinite;
+}
+@keyframes lblBlink{0%,100%{opacity:1;}50%{opacity:.6;}}
+
+/* ─── FOOTER ─── */
+footer{
+  position:relative;overflow:hidden;
+  min-height:440px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:60px 5% 100px;text-align:center;
+}
+.fvid{position:absolute;inset:0;z-index:0;}
+.fvid video{width:100%;height:100%;object-fit:cover;display:block;}
+.fvid-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(13,30,58,.95) 0%,rgba(13,30,58,.90) 60%,rgba(13,30,58,.98) 100%);}
+.footer-content{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;}
+.f-logo{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px;}
+.f-logo img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2.5px solid rgba(255,255,255,.25);}
+.f-brand-name{text-align:left;}
+.f-brand-main{font-family:var(--fn-d);font-size:1.7rem;text-transform:uppercase;letter-spacing:1px;color:#fff;line-height:1.1;}
+.f-brand-sub{font-family:var(--fn-h);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gh);margin-top:3px;font-weight:600;}
+
+/* Animated footer social */
+.f-soc-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0 32px;}
+.fsoc{
+  display:flex;align-items:center;gap:8px;
+  padding:11px 18px;border-radius:4px;
+  font-family:var(--fn-c);font-size:.8rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+  transition:transform .3s,box-shadow .3s,background .3s;
+}
+.fsoc img,.fsoc svg{width:18px;height:18px;flex-shrink:0;transition:transform .35s;border-radius:3px;object-fit:contain;}
+.fsoc:hover img,.fsoc:hover svg{transform:scale(1.25) rotate(-8deg);}
+.fsoc:hover{transform:translateY(-3px);}
+.fsoc.fb{background:rgba(24,119,242,.12);border:1px solid rgba(24,119,242,.32);color:#5fa3ff;}
+.fsoc.fb:hover{background:rgba(24,119,242,.24);box-shadow:0 6px 20px rgba(24,119,242,.3);}
+.fsoc.ig{background:rgba(228,64,95,.12);border:1px solid rgba(228,64,95,.32);color:#f478a0;}
+.fsoc.ig:hover{background:rgba(228,64,95,.24);box-shadow:0 6px 20px rgba(228,64,95,.3);}
+.fsoc.gg{background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.32);color:#80b0ff;}
+.fsoc.gg:hover{background:rgba(66,133,244,.24);box-shadow:0 6px 20px rgba(66,133,244,.3);}
+.fsoc.wa{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.32);color:#2ed87a;}
+.fsoc.wa:hover{background:rgba(37,211,102,.24);box-shadow:0 6px 20px rgba(37,211,102,.3);}
+.fsoc.hp{background:rgba(21,101,192,.14);border:1px solid rgba(21,101,192,.38);color:#90caff;}
+.fsoc.hp:hover{background:rgba(21,101,192,.26);box-shadow:0 6px 20px rgba(21,101,192,.3);}
+
+/* Bold visible footer grid */
+.f-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;text-align:left;margin-bottom:32px;}
+.f-col-h{font-family:var(--fn-h);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gh);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-links a{font-family:var(--fn-c);font-size:.92rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.72);transition:color .2s,padding-left .2s;}
+.f-links a:hover{color:#fff;padding-left:6px;}
+/* Bold footer address */
+.f-addr{font-family:var(--fn-b);font-size:.9rem;font-weight:600;line-height:2;color:rgba(255,255,255,.75);}
+.f-addr a{color:var(--gh);transition:color .2s;}
+.f-addr a:hover{color:#fff;}
+/* Bold footer copyright */
+.f-copy{font-family:var(--fn-c);font-size:.85rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+/* ─── TICKER ─── */
+.ticker{
+  position:fixed;bottom:0;left:0;right:0;z-index:900;
+  height:42px;overflow:hidden;
+  background:var(--green);
+  display:flex;align-items:center;
+  border-top:2px solid rgba(255,255,255,.22);
+}
+.tk-track{display:flex;white-space:nowrap;animation:tick 32s linear infinite;}
+.tk-track:hover{animation-play-state:paused;}
+/* BOLD ticker text using Anton */
+.tk-item{
+  font-family:var(--fn-d);font-size:.85rem;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:#fff;padding:0 32px;
+  display:flex;align-items:center;gap:14px;
+}
+.tk-dot{width:6px;height:6px;background:rgba(255,255,255,.65);border-radius:50%;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SCROLL REVEAL ─── */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease;}
+.rv.in{opacity:1;transform:none;}
+.rl{opacity:0;transform:translateX(-26px);transition:opacity .65s ease,transform .65s ease;}
+.rl.in{opacity:1;transform:none;}
+.rr{opacity:0;transform:translateX(26px);transition:opacity .65s ease,transform .65s ease;}
+.rr.in{opacity:1;transform:none;}
+[data-d="1"]{transition-delay:.08s;}[data-d="2"]{transition-delay:.16s;}[data-d="3"]{transition-delay:.24s;}[data-d="4"]{transition-delay:.32s;}[data-d="5"]{transition-delay:.4s;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){.sec-title{font-size:clamp(2.5rem,5.5vw,5rem);}}
+@media(max-width:1024px){
+  .about-layout,.cg,.timing-layout{grid-template-columns:1fr;}
+  .pricing-grid,.tg{grid-template-columns:1fr;}
+  .f-grid{grid-template-columns:1fr 1fr;}
+  .about-logo-scene{max-width:320px;margin:0 auto 40px;}
+}
+@media(max-width:768px){
+  .nav-links,.btn-nav-book{display:none;}
+  .hbg{display:flex;}
+  .mob-nav{display:flex;}
+  .gal-grid{grid-template-columns:1fr 1fr;}
+  .gi:nth-child(1){grid-column:1/3;}
+  .gi:nth-child(2){grid-column:1/2;}
+  .gi:nth-child(3){grid-column:2/3;}
+  .gi:nth-child(4){grid-column:1/3;}
+  .tg{grid-template-columns:1fr;}
+  .days-row{grid-template-columns:repeat(4,1fr);}
+  .f-grid{grid-template-columns:1fr;}
+  .wrap{padding:72px 5%;}
+  .hst{padding:14px 20px;}
+  .soc-grid{grid-template-columns:1fr;}
+  .map-header{flex-wrap:wrap;}.map-h-badge{margin-left:0;}
+  .court-badge{flex-direction:column;text-align:center;padding:16px 24px;}
+  #float-book{right:16px;bottom:56px;}
+}
+@media(max-width:520px){
+  .hero-h1{font-size:3rem;}
+  .sec-title{font-size:2.4rem;}
+  .popup{padding:28px 18px;}
+  .popup-plats{grid-template-columns:1fr;}
+  .days-row{grid-template-columns:repeat(3,1fr);}
+  .f-soc-row{gap:7px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="nav-brand">
+    <img src="logo.png" alt="Logo" class="nav-logo-img"
+         onerror="this.src='3.png';this.onerror=null;">
+    <div class="nav-wm">
+      <div class="nav-wm-main">The South PickleBall Arena</div>
+      <div class="nav-wm-sub">By The South Water Park · Jaipur</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#timing">Timing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <!-- CALL NOW — left of Book Now -->
+    <a href="tel:+919636315450" class="btn-nav-call">
+      <span class="call-dot"></span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+      Call Now
+    </a>
+    <button class="btn-nav-book" onclick="openBook()">⚡ Book Now</button>
+    <button class="hbg" id="hbg" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="#timing" onclick="closeMob()">Timing</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#" class="mob-book" onclick="openBook();closeMob()">⚡ Book Now</a>
+  <a href="tel:+919636315450" class="mob-book" style="color:#4eff80;">📞 Call Now — +91 96363 15450</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="home">
+  <div class="hvw">
+    <video autoplay muted loop playsinline preload="auto" id="heroVid">
+      <source src="A1.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="ho1"></div><div class="ho2"></div>
+  <div class="hd-bar"></div><div class="hgrid"></div>
+
+  <!-- Floating pickleball SVGs -->
+  <div class="pb-float pb1">
+    <svg viewBox="0 0 65 65" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32.5" cy="32.5" r="30" fill="white" stroke="rgba(200,41,58,0.2)" stroke-width="1"/>
+      <circle cx="32.5" cy="32.5" r="4" fill="#C8293A"/>
+      <circle cx="20" cy="20" r="3.5" fill="#C8293A"/>
+      <circle cx="45" cy="20" r="3.5" fill="#C8293A"/>
+      <circle cx="20" cy="45" r="3.5" fill="#C8293A"/>
+      <circle cx="45" cy="45" r="3.5" fill="#C8293A"/>
+      <circle cx="32.5" cy="16" r="3.5" fill="#C8293A"/>
+      <circle cx="32.5" cy="49" r="3.5" fill="#C8293A"/>
+      <circle cx="16" cy="32.5" r="3.5" fill="#C8293A"/>
+      <circle cx="49" cy="32.5" r="3.5" fill="#C8293A"/>
+    </svg>
+  </div>
+  <div class="pb-float pb2">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="rgba(255,255,255,0.92)"/>
+      <circle cx="24" cy="24" r="3" fill="#1B3A6B"/>
+      <circle cx="15" cy="15" r="2.5" fill="#1B3A6B"/><circle cx="33" cy="15" r="2.5" fill="#1B3A6B"/>
+      <circle cx="15" cy="33" r="2.5" fill="#1B3A6B"/><circle cx="33" cy="33" r="2.5" fill="#1B3A6B"/>
+      <circle cx="24" cy="10" r="2.5" fill="#1B3A6B"/><circle cx="24" cy="38" r="2.5" fill="#1B3A6B"/>
+    </svg>
+  </div>
+  <div class="pb-float pb3">
+    <svg viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="17" cy="17" r="15.5" fill="rgba(255,255,255,0.85)"/>
+      <circle cx="17" cy="17" r="2" fill="#2D7D46"/>
+      <circle cx="10.5" cy="10.5" r="1.8" fill="#2D7D46"/>
+      <circle cx="23.5" cy="10.5" r="1.8" fill="#2D7D46"/>
+      <circle cx="10.5" cy="23.5" r="1.8" fill="#2D7D46"/>
+      <circle cx="23.5" cy="23.5" r="1.8" fill="#2D7D46"/>
+    </svg>
+  </div>
+  <div class="pb-float pb4">
+    <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="21" r="19.5" fill="rgba(255,255,255,0.88)"/>
+      <circle cx="21" cy="21" r="3" fill="#C8293A"/>
+      <circle cx="13" cy="13" r="2.2" fill="#C8293A"/>
+      <circle cx="29" cy="13" r="2.2" fill="#C8293A"/>
+      <circle cx="13" cy="29" r="2.2" fill="#C8293A"/>
+      <circle cx="29" cy="29" r="2.2" fill="#C8293A"/>
+      <circle cx="21" cy="8"  r="2.2" fill="#C8293A"/>
+      <circle cx="21" cy="34" r="2.2" fill="#C8293A"/>
+    </svg>
+  </div>
+  <!-- Paddles -->
+  <div class="pb-float pad1">
+    <svg viewBox="0 0 85 170" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="42.5" cy="66" rx="36" ry="48" fill="#2D7D46" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+      <rect x="38" y="112" width="9" height="46" rx="4.5" fill="#1B3A6B" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="16" y1="45" x2="68" y2="45" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <line x1="12" y1="62" x2="72" y2="62" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <line x1="12" y1="79" x2="72" y2="79" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+      <line x1="42.5" y1="22" x2="42.5" y2="110" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="pb-float pad2">
+    <svg viewBox="0 0 70 140" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="35" cy="54" rx="30" ry="40" fill="#C8293A" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      <rect x="31" y="92" width="8" height="38" rx="4" fill="#1B3A6B" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="14" y1="37" x2="56" y2="37" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line x1="10" y1="52" x2="60" y2="52" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line x1="10" y1="67" x2="60" y2="67" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="hbody">
+    <div class="h-badge">Jaipur's Premier Pickleball Arena</div>
+    <h1 class="hero-h1">
+      <span class="hl1">The South</span>
+      <span class="hl2">Pickleball</span>
+      <span class="hl3">Arena</span>
+    </h1>
+    <p class="h-sub">Inside <em>The South Water Park</em> · Goner Road · Sitapura · Jaipur</p>
+    <div class="hbtns">
+      <button class="btn-hp" onclick="openBook()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        Book a Court
+      </button>
+      <a href="#pricing" class="btn-hl">
+        View Pricing
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </a>
+    </div>
+    <div class="hstats">
+      <div class="hst"><span class="hst-n">16</span><span class="hst-l">Hours Daily</span></div>
+      <div class="hst"><span class="hst-n">7</span><span class="hst-l">Days a Week</span></div>
+      <div class="hst"><span class="hst-n">₹549</span><span class="hst-l">Starting Price</span></div>
+      <div class="hst"><span class="hst-n">1</span><span class="hst-l">Premium Court</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="s-arrow"></div></div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="wrap">
+    <!-- 1 Premium Court Badge -->
+    <div class="court-badge-wrap rv">
+      <div class="court-badge">
+        <div class="court-badge-icon">🏆</div>
+        <div>
+          <div class="court-badge-title">1 Premium Standard Court</div>
+          <div class="court-badge-sub">Professional Grade · Exclusive Access · Sitapura Jaipur</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-layout">
+      <!-- Logo left -->
+      <div class="rl" style="display:flex;justify-content:center;align-items:center;">
+        <div class="about-logo-scene">
+          <div class="lor"></div>
+          <div class="lir"></div>
+          <div class="orb orb1"></div>
+          <div class="orb orb2"></div>
+          <div class="orb orb3"></div>
+          <img src="logo.png" alt="The South PickleBall Arena" class="ali"
+               onerror="this.src='3.png';this.onerror=null;">
+        </div>
+      </div>
+
+      <!-- Text right -->
+      <div class="about-text rr">
+        <div class="sec-eye" style="justify-content:flex-start;">About Us</div>
+        <h2 class="sec-title" style="text-align:left;font-size:clamp(2.5rem,5vw,5rem);">
+          WHERE THE<br><em>GAME BEGINS</em>
+        </h2>
+
+        <div class="court-note">
+          <div class="cn-icon">🏓</div>
+          <div class="cn-text">
+            <span>1 Premium Standard Court</span> — Professionally designed &amp; maintained pickleball court with international dimensions &amp; premium surface for the ultimate playing experience.
+          </div>
+        </div>
+
+        <p class="sec-p" style="text-align:left;margin-left:0;margin-bottom:24px;">
+          Located inside The South Water Park on Goner Road, opposite Chokhi Dhani — Jaipur's most exciting pickleball destination. Our single premium court ensures an exclusive, focused and top-quality experience for every player.
+        </p>
+
+        <div class="feat-grid">
+          <div class="feat-card">
+            <div class="feat-ic">🏟️</div>
+            <div class="feat-nm">Premium Court</div>
+            <div class="feat-ds">1 Standard pro-grade court</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-ic">🌿</div>
+            <div class="feat-nm">Scenic Setting</div>
+            <div class="feat-ds">Inside The South Water Park</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-ic">📱</div>
+            <div class="feat-nm">Easy Booking</div>
+            <div class="feat-ds">WhatsApp &amp; HuddlePlay</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-ic">🌅</div>
+            <div class="feat-nm">Open All Day</div>
+            <div class="feat-ds">6 AM to 10 PM every day</div>
+          </div>
+        </div>
+
+        <div class="stats-strip">
+          <div class="sbox"><div class="sn">1</div><div class="sl">Premium Court</div></div>
+          <div class="sbox"><div class="sn">16</div><div class="sl">Hrs / Day</div></div>
+          <div class="sbox"><div class="sn">365</div><div class="sl">Days / Year</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <div class="sec-eye">Pricing</div>
+      <h2 class="sec-title"><em>FAIR</em> &amp; SIMPLE PRICING</h2>
+      <p class="sec-p">1 Premium Court · Affordable for every player — flexible peak and non-peak rates.</p>
+    </div>
+    <div class="pricing-grid rv">
+      <!-- PEAK ₹649 -->
+      <div class="pc hot">
+        <div class="pc-bg">P</div>
+        <div class="pbadge peak">🔥 Peak Hours</div>
+        <div class="pname">Prime Time</div>
+        <div class="ptag">Morning &amp; Evening — best atmosphere</div>
+        <div class="pprice">
+          <span class="pcur">₹</span>
+          <span class="pamt">649</span>
+          <span class="pper">/ hour</span>
+        </div>
+        <div class="p-old">
+          <span>Was ₹749</span>
+          <span class="p-save">Save ₹100</span>
+        </div>
+        <div class="pslots">
+          <div class="pslot r"><div class="bl"></div>Morning: 6:00 AM – 10:00 AM</div>
+          <div class="pslot r"><div class="bl"></div>Evening: 4:00 PM – 10:00 PM</div>
+        </div>
+        <ul class="pfeats">
+          <li>1 Premium standard court rental</li>
+          <li>Available all 7 days</li>
+          <li>Equipment available on request</li>
+          <li>Peak energy &amp; atmosphere</li>
+        </ul>
+        <button class="btn-g" onclick="openBook()">Book Peak Slot ⚡</button>
+      </div>
+      <!-- NON-PEAK ₹549 -->
+      <div class="pc">
+        <div class="pc-bg">M</div>
+        <div class="pbadge off">🌞 Non-Peak Hours</div>
+        <div class="pname">Midday Sessions</div>
+        <div class="ptag">Perfect for practice &amp; training</div>
+        <div class="pprice">
+          <span class="pcur">₹</span>
+          <span class="pamt">549</span>
+          <span class="pper">/ hour</span>
+        </div>
+        <div class="p-old">
+          <span>Was ₹649</span>
+          <span class="p-save">Save ₹100</span>
+        </div>
+        <div class="pslots">
+          <div class="pslot"><div class="bl"></div>Midday: 10:00 AM – 4:00 PM</div>
+        </div>
+        <ul class="pfeats">
+          <li>1 Premium standard court rental</li>
+          <li>Available all 7 days</li>
+          <li>Equipment available on request</li>
+          <li>Ideal for longer practice sessions</li>
+        </ul>
+        <!-- HUDDLEPLAY BUTTON with logo — direct link to venue -->
+        <a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank" rel="noopener noreferrer" class="btn-huddle">
+          <img src="hudle_logo.JPG" alt="HuddlePlay" class="huddle-logo-img"
+               onerror="this.style.display='none'">
+          Book on HuddlePlay
+        </a>
+      </div>
+    </div>
+    <p class="rv" style="text-align:center;margin-top:16px;font-family:var(--fn-b);font-size:.82rem;font-weight:500;color:rgba(255,255,255,.45);">
+      * All prices per court per hour · 1 Premium Standard Court · Walk-ins welcome subject to availability
+    </p>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══ TIMING ═══ -->
+<section id="timing">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <div class="sec-eye">Opening Hours</div>
+      <h2 class="sec-title">OPEN EVERY <em>SINGLE</em> DAY</h2>
+      <p class="sec-p">Morning to night — 1 premium court, all yours whenever you want to play.</p>
+    </div>
+    <div class="timing-layout">
+      <div class="rl">
+        <div class="big-clock">
+          <span class="from">6 AM</span>
+          <span class="sep">—</span>
+          <span class="to">10 PM</span>
+          <span class="tsub">All 7 Days · Every Week · All Year</span>
+        </div>
+        <div class="days-row">
+          <div class="day on"><div class="day-n">Mon</div><div class="day-ic">🏓</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Tue</div><div class="day-ic">🏓</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Wed</div><div class="day-ic">🏓</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Thu</div><div class="day-ic">🏓</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Fri</div><div class="day-ic">🏓</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Sat</div><div class="day-ic">🎯</div><div class="day-s">Open</div></div>
+          <div class="day on"><div class="day-n">Sun</div><div class="day-ic">🎯</div><div class="day-s">Open</div></div>
+        </div>
+      </div>
+      <div class="tcards rr">
+        <div class="tcard">
+          <div class="t-lbl">Peak Hours — ₹649/hr</div>
+          <div class="t-val">6–10 AM &amp; 4–10 PM</div>
+        </div>
+        <div class="tcard r">
+          <div class="t-lbl">Non-Peak Hours — ₹549/hr</div>
+          <div class="t-val">10:00 AM – 4:00 PM</div>
+        </div>
+        <div class="tcard w">
+          <div class="t-lbl">Book Your Slot Via</div>
+          <div class="book-row">
+            <a href="https://wa.me/919636315450?text=Hi%2C%20I%20want%20to%20book%20a%20pickleball%20court" target="_blank" class="bk wa">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp — +91 96363 15450
+            </a>
+            <a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank" class="bk hp">
+              <img src="hudle_logo.JPG" alt="HuddlePlay" onerror="this.style.display='none'">
+              HuddlePlay — Online Platform
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══ GALLERY (4 Images) ═══ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:48px;">
+      <div class="sec-eye">Gallery</div>
+      <h2 class="sec-title">INSIDE THE <em>ARENA</em></h2>
+      <p class="sec-p">Your premium court, your game.</p>
+      <div style="display:flex;justify-content:center;margin-top:-8px;">
+        <a href="https://www.instagram.com/thesouthpickleballarena/" target="_blank" class="btn-hl" style="width:auto;padding:12px 28px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Follow on Instagram
+        </a>
+      </div>
+    </div>
+    <!-- Gallery using converted JPG images -->
+    <div class="gal-grid rv">
+      <div class="gi" onclick="openLightbox('1.jpg','Main Court')">
+        <div class="gi-inner">
+          <img class="gi-img" src="1.jpg" alt="Main Court" onerror="this.style.display='none'">
+        </div>
+        <div class="gi-ov"></div>
+        <div class="gi-info"><div class="gi-nm">Premium Arena Floor</div><div class="gi-sub">Our 1 professional pickleball court</div></div>
+        <div class="gi-cat">Court</div>
+      </div>
+      <div class="gi" onclick="openLightbox('2.jpg','Night Sessions')">
+        <div class="gi-inner" style="background:linear-gradient(135deg,#0c1e3e,#1B3A6B);">
+          <img class="gi-img" src="2.jpg" alt="Night" onerror="this.style.display='none'">
+        </div>
+        <div class="gi-ov"></div>
+        <div class="gi-info"><div class="gi-nm">Night Lighting</div><div class="gi-sub">Play till 10 PM under floodlights</div></div>
+        <div class="gi-cat">Lighting</div>
+      </div>
+      <div class="gi" onclick="openLightbox('3.jpg','Equipment')">
+        <div class="gi-inner" style="background:linear-gradient(135deg,#0a1e10,#142e1a);">
+          <img class="gi-img" src="3.jpg" alt="Equipment" onerror="this.style.display='none'">
+        </div>
+        <div class="gi-ov"></div>
+        <div class="gi-info"><div class="gi-nm">Pro Equipment</div><div class="gi-sub">Paddles &amp; balls on request</div></div>
+        <div class="gi-cat" style="background:var(--navy);">Gear</div>
+      </div>
+      <div class="gi" onclick="openLightbox('4.jpg','Events')">
+        <div class="gi-inner" style="background:linear-gradient(135deg,#1e0a10,#2e1018);">
+          <img class="gi-img" src="4.jpg" alt="Events" onerror="this.style.display='none'">
+        </div>
+        <div class="gi-ov"></div>
+        <div class="gi-info"><div class="gi-nm">Tournament Events</div><div class="gi-sub">Competitive matches &amp; events</div></div>
+        <div class="gi-cat" style="background:var(--red);">Events</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-close" onclick="closeLightbox(event)">✕</div>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="stripe"></div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <div class="sec-eye">Reviews</div>
+      <h2 class="sec-title">WHAT PLAYERS <em>SAY</em></h2>
+    </div>
+    <div class="tg">
+      <div class="tc rv" data-d="1">
+        <div class="tc-q">"</div>
+        <p class="tc-text">World-class facility right here in Jaipur! The court surface is excellent and the evening lighting for night sessions is top-notch. Best pickleball experience in the city.</p>
+        <div class="tc-auth">
+          <div class="tc-av" style="background:linear-gradient(135deg,#2D7D46,#1B3A6B);">R</div>
+          <div>
+            <div class="tc-nm">Rahul Sharma</div>
+            <div class="tc-rl">Regular Player · Jaipur</div>
+            <div class="tc-st">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="tc rv" data-d="3">
+        <div class="tc-q">"</div>
+        <p class="tc-text">₹549 for an hour on a professional premium court is incredible value! Location near Chokhi Dhani is very convenient and the staff is always welcoming. Highly recommend!</p>
+        <div class="tc-auth">
+          <div class="tc-av" style="background:linear-gradient(135deg,#C8293A,#800020);">P</div>
+          <div>
+            <div class="tc-nm">Priya Meena</div>
+            <div class="tc-rl">Weekend Player · Sitapura</div>
+            <div class="tc-st">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="tc rv" data-d="5">
+        <div class="tc-q">"</div>
+        <p class="tc-text">Inside the South Water Park makes it so unique! WhatsApp booking is instant and easy. My whole group is completely addicted to pickleball now — it's the best!</p>
+        <div class="tc-auth">
+          <div class="tc-av" style="background:linear-gradient(135deg,#1a5276,#1B3A6B);">A</div>
+          <div>
+            <div class="tc-nm">Aditya Verma</div>
+            <div class="tc-rl">Coaching Student</div>
+            <div class="tc-st">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;">
+      <div class="sec-eye">Contact &amp; Location</div>
+      <h2 class="sec-title">FIND US &amp; <em>GET IN TOUCH</em></h2>
+    </div>
+    <div class="cg">
+      <!-- LEFT: Info -->
+      <div class="rl">
+        <div class="c-grp">
+          <div class="c-grp-h">Address</div>
+          <div class="c-row">
+            <div class="c-ic">📍</div>
+            <div class="c-val">68/2 Inside The South Water Park,<br>Goner Road, Opposite Chokhi Dhani,<br>Sitapura, Jaipur – 302022</div>
+          </div>
+        </div>
+        <div class="c-grp">
+          <div class="c-grp-h">Phone</div>
+          <div class="c-row"><div class="c-ic">📞</div><div class="c-val"><a href="tel:+919636315450">+91 96363 15450</a></div></div>
+          <div class="c-row"><div class="c-ic">📞</div><div class="c-val"><a href="tel:+919928075914">+91 99280 75914</a></div></div>
+        </div>
+        <div class="c-grp">
+          <div class="c-grp-h">Hours</div>
+          <div class="c-row"><div class="c-ic">⏰</div><div class="c-val">Monday – Sunday · 6:00 AM to 10:00 PM</div></div>
+        </div>
+        <div class="c-grp">
+          <div class="c-grp-h">Follow &amp; Connect</div>
+          <div class="soc-grid" id="socGrid">
+            <a href="https://www.facebook.com/thesouthpickleballarena" target="_blank" class="soc fb">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook
+            </a>
+            <a href="https://www.instagram.com/thesouthpickleballarena/" target="_blank" class="soc ig">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Instagram
+            </a>
+            <a href="https://share.google/e8OGLYLirngEbKQc2" target="_blank" class="soc gg">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>Google
+            </a>
+            <a href="https://wa.me/919636315450" target="_blank" class="soc wa">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp
+            </a>
+            <a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank" class="soc hp" style="grid-column:1/-1;">
+              <img src="hudle_logo.JPG" alt="HuddlePlay" onerror="this.style.display='none'">
+              HuddlePlay — Book Online
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Prominent Map with brand -->
+      <div class="rr">
+        <div class="map-wrap">
+          <div class="map-header">
+            <img src="logo.png" alt="Logo" class="map-h-logo" onerror="this.src='3.png';this.onerror=null;">
+            <div class="map-h-info">
+              <div class="map-h-name">The South PickleBall Arena</div>
+              <div class="map-h-addr">68/2 Inside The South Water Park · Goner Road · Sitapura · Jaipur 302022</div>
+            </div>
+            <div class="map-h-badge">
+              <div class="map-h-dot"></div>
+              <span>We Are Open</span>
+            </div>
+          </div>
+          <!-- MAP: The South Pickleball Arena — Exact coordinates: 26.76662, 75.84195 -->
+          <div class="map-iframe-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=26.76662,75.84195&z=18&t=m&ie=UTF8&iwloc=&output=embed"
+              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              id="mapFrame">
+            </iframe>
+            <!-- Transparent overlay — clicking anywhere on map opens correct Google Maps link -->
+            <a href="https://maps.app.goo.gl/PJfhA5SzZU3UaqTT9"
+               target="_blank" rel="noopener noreferrer"
+               class="map-click-overlay"
+               title="Open The South PickleBall Arena in Google Maps">
+              <div class="map-open-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Click to Open in Google Maps
+              </div>
+            </a>
+          </div>
+          <div class="map-footer">
+            <div class="map-ft-text">📍 Opposite Chokhi Dhani · Sitapura · Jaipur</div>
+            <!-- DIRECT link opens exact goo.gl URL -->
+            <a href="https://maps.app.goo.gl/PJfhA5SzZU3UaqTT9" target="_blank" rel="noopener noreferrer" class="map-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="gh-note" style="margin-top:12px;">
+          <div class="gh-title">Getting Here</div>
+          <p class="gh-text">Inside The South Water Park on Goner Road, opposite Chokhi Dhani, Sitapura Extension. Easily accessible from all parts of Jaipur with ample parking on site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POPUP ═══ -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="popup-x" onclick="closeBook()">✕</div>
+    <div class="popup-brand">
+      <img src="logo.png" alt="Logo" onerror="this.src='3.png';this.onerror=null;">
+      <div class="popup-bn">
+        The South PickleBall Arena
+        <span>1 Premium Court · By The South Water Park · Jaipur</span>
+      </div>
+    </div>
+    <h2 class="popup-h">Book a Court</h2>
+    <p class="popup-s">Select your preferred booking method</p>
+    <div class="popup-plats">
+      <a href="https://wa.me/919636315450?text=Hi%2C%20I%20want%20to%20book%20a%20pickleball%20court%20at%20The%20South%20PickleBall%20Arena" target="_blank" class="pp wa">
+        <svg viewBox="0 0 24 24" fill="#25D366" width="52" height="52"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div class="pp-n">WhatsApp</div>
+        <div class="pp-s">Instant chat booking</div>
+      </a>
+      <!-- HUDDLEPLAY with actual logo -->
+      <a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank" class="pp hp">
+        <img src="hudle_logo.JPG" alt="HuddlePlay" class="pp-logo-img"
+             onerror="this.outerHTML='<svg viewBox=\'0 0 52 52\' width=\'52\' height=\'52\'><circle cx=\'26\' cy=\'26\' r=\'24\' fill=\'%231565C0\'\/><path d=\'M18 16l20 10-20 10V16z\' fill=\'white\'\/><\/svg>'">
+        <div class="pp-n" style="color:#90caff;">HuddlePlay</div>
+        <div class="pp-s">Online platform</div>
+      </a>
+    </div>
+    <div class="popup-info">
+      <strong>📍 Location</strong> · 68/2 Inside The South Water Park, Goner Road, Sitapura, Jaipur<br>
+      <strong>🏆 Court</strong> · 1 Premium Standard Pickleball Court<br>
+      <span class="g"><strong>🔥 Peak Hours</strong></span> (6–10 AM &amp; 4–10 PM) → <strong>₹649/hr</strong><br>
+      <strong>🌞 Non-Peak</strong> (10 AM – 4 PM) → <strong>₹549/hr</strong><br>
+      <strong>📞 Call</strong> → 9636315450 / 9928075914<br>
+      <strong>⏰ Open</strong> All 7 Days · 6:00 AM – 10:00 PM
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FLOATING BOOK BTN (BRAND LOGO) ═══ -->
+<div id="float-book">
+  <div class="float-rings">
+    <div class="float-ring"></div>
+    <div class="float-ring"></div>
+    <div class="float-ring"></div>
+  </div>
+  <button class="float-btn" onclick="openBook()" title="Book a Court Now">
+    <img src="logo.png" alt="Book Now"
+         onerror="this.style.display='none';this.nextSibling.style.display='block';">
+    <span class="float-btn-fallback" style="display:none;">🏓</span>
+  </button>
+  <div class="float-label">Book Now</div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="fvid">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="A1.mp4" type="video/mp4">
+    </video>
+    <div class="fvid-ov"></div>
+  </div>
+  <div class="footer-content">
+    <div class="f-logo">
+      <img src="logo.png" alt="Logo" onerror="this.src='3.png';this.onerror=null;">
+      <div class="f-brand-name">
+        <div class="f-brand-main">The South PickleBall Arena</div>
+        <div class="f-brand-sub">By The South Water Park · Jaipur</div>
+      </div>
+    </div>
+
+    <!-- ANIMATED FOOTER SOCIAL with HuddlePlay logo -->
+    <div class="f-soc-row" id="fSocRow">
+      <a href="https://www.facebook.com/thesouthpickleballarena" target="_blank" class="fsoc fb">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook
+      </a>
+      <a href="https://www.instagram.com/thesouthpickleballarena/" target="_blank" class="fsoc ig">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Instagram
+      </a>
+      <a href="https://share.google/e8OGLYLirngEbKQc2" target="_blank" class="fsoc gg">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>Google
+      </a>
+      <a href="https://wa.me/919636315450" target="_blank" class="fsoc wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp
+      </a>
+      <!-- HuddlePlay with real logo -->
+      <a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank" class="fsoc hp">
+        <img src="hudle_logo.JPG" alt="HuddlePlay" onerror="this.style.display='none'">
+        HuddlePlay
+      </a>
+    </div>
+
+    <div class="f-grid">
+      <div>
+        <div class="f-col-h">Quick Links</div>
+        <ul class="f-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#timing">Timings</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-h">Book Now</div>
+        <ul class="f-links">
+          <li><a href="https://wa.me/919636315450" target="_blank">WhatsApp Booking</a></li>
+          <li><a href="https://hudle.in/venues/he-south-pickleball-arena/395796" target="_blank">HuddlePlay Platform</a></li>
+          <li><a href="#pricing">Peak Hours — ₹649/hr</a></li>
+          <li><a href="#pricing">Non-Peak — ₹549/hr</a></li>
+          <li><a href="#about">1 Premium Standard Court</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-h">Contact Info</div>
+        <div class="f-addr">
+          📍 68/2 Inside The South Water Park<br>
+          Goner Road, Opp. Chokhi Dhani<br>
+          Sitapura, Jaipur – 302022<br><br>
+          📞 <a href="tel:+919636315450">+91 96363 15450</a><br>
+          📞 <a href="tel:+919928075914">+91 99280 75914</a><br><br>
+          ⏰ 6:00 AM – 10:00 PM · Open 7 Days
+        </div>
+      </div>
+    </div>
+
+    <div class="f-copy">
+      © 2025 The South PickleBall Arena · All Rights Reserved · Sitapura · Jaipur · Rajasthan 302022
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ TICKER — BOLD Anton font ═══ -->
+<!-- ✏️ Edit .tk-item text here. Keep Block 2 identical for seamless loop -->
+<div class="ticker">
+  <div class="tk-track">
+    <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
+    <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
+    <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
+    <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
+    <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
+    <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
+    <div class="tk-item">💰 Peak ₹649 · Non-Peak ₹549 <span class="tk-dot"></span></div>
+    <div class="tk-item">📞 +91 96363 15450 <span class="tk-dot"></span></div>
+    <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
+    <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
+    <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
+    <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
+    <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
+    <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
+    <div class="tk-item">💰 Peak ₹649 · Non-Peak ₹549 <span class="tk-dot"></span></div>
+    <div class="tk-item">📞 +91 96363 15450 <span class="tk-dot"></span></div>
+  </div>
+</div>
+
+<script>
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',scrollY>60);
+},{passive:true});
+
+/* MOBILE MENU */
+function toggleMob(){
+  document.getElementById('hbg').classList.toggle('open');
+  document.getElementById('mobNav').classList.toggle('open');
+}
+function closeMob(){
+  document.getElementById('hbg').classList.remove('open');
+  document.getElementById('mobNav').classList.remove('open');
+}
+
+/* POPUP */
+function openBook(){
+  document.getElementById('overlay').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeBook(){
+  document.getElementById('overlay').classList.remove('on');
+  document.body.style.overflow='';
+}
+document.getElementById('overlay').addEventListener('click',function(e){
+  if(e.target===this)closeBook();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBook();});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.07,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv,.rl,.rr').forEach(el=>ro.observe(el));
+
+/* HERO ENTRANCE */
+window.addEventListener('load',()=>{
+  [['.h-badge',.15],['.hero-h1 .hl1',.28],['.hero-h1 .hl2',.42],
+   ['.hero-h1 .hl3',.54],['.h-sub',.66],['.hbtns',.78],['.hstats',.9]
+  ].forEach(([s,d])=>{
+    const el=document.querySelector(s);if(!el)return;
+    el.style.cssText=`opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;transition-delay:${d}s;`;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateY(0)';}));
+  });
+  const v=document.getElementById('heroVid');
+  if(v)v.play().catch(()=>{});
+});
+
+/* FLOATING BUTTON show/hide */
+const fb=document.getElementById('float-book');
+window.addEventListener('scroll',()=>{
+  scrollY>200?fb.classList.add('show'):fb.classList.remove('show');
+},{passive:true});
+
+/* SOCIAL ICONS stagger pop */
+const socObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll('.soc,.fsoc').forEach((el,i)=>{
+        el.style.animation=`socPop .45s ${.05+i*.08}s both`;
+      });
+      socObs.unobserve(entry.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.soc-grid,.f-soc-row').forEach(el=>socObs.observe(el));
+/* LIGHTBOX */
+function openLightbox(src,caption){
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lightboxImg');
+  const cap=document.getElementById('lightboxCaption');
+  img.src=src;
+  cap.textContent=caption;
+  lb.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(e){
+  if(e.target.id==='lightbox'||e.target.classList.contains('lightbox-close')){
+    document.getElementById('lightbox').classList.remove('on');
+    document.body.style.overflow='';
+    setTimeout(()=>{document.getElementById('lightboxImg').src='';},300);
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lightbox').classList.remove('on');document.body.style.overflow='';});
+</script>
+</body>
+</html>
