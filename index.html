@@ -704,7 +704,7 @@ section{position:relative;}
 /* ─── SOUTH WATER PARK GLOWING POPUP ─── */
 .waterpark-popup{
   position:fixed;
-  bottom:130px;
+  bottom:170px;
   right:28px;
   z-index:799;
   background:linear-gradient(135deg,rgba(30,136,229,.95),rgba(21,101,192,.95));
@@ -745,13 +745,17 @@ section{position:relative;}
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-6px);}
 }
-.waterpark-icon{
-  font-size:1.8rem;
-  animation:waveIcon 2s ease-in-out infinite;
+.waterpark-logo-img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.4);
+  animation:waterparkPulse 2s ease-in-out infinite;
 }
-@keyframes waveIcon{
-  0%,100%{transform:rotate(-5deg);}
-  50%{transform:rotate(5deg);}
+@keyframes waterparkPulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
 }
 .waterpark-text{
   font-family:var(--fn-c);
@@ -779,10 +783,11 @@ section{position:relative;}
 @media(max-width:768px){
   .waterpark-popup{
     right:16px;
-    bottom:128px;
+    bottom:160px;
     padding:12px 14px;
     max-width:160px;
   }
+  .waterpark-logo-img{width:42px;height:42px;}
   .waterpark-text{font-size:.7rem;}
 }
 footer{
@@ -1523,7 +1528,7 @@ footer{
 
 <!-- ═══ SOUTH WATER PARK GLOWING POPUP ═══ -->
 <a href="https://thesouthwaterpark.com/" target="_blank" rel="noopener noreferrer" class="waterpark-popup" title="Explore The South Water Park">
-  <div class="waterpark-icon">🌊</div>
+  <img src="logo.png" alt="The South Water Park" class="waterpark-logo-img" onerror="this.style.display='none'">
   <div class="waterpark-text">The South Water Park</div>
   <div class="waterpark-link">
     Explore Now
@@ -1633,6 +1638,7 @@ footer{
     <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
     <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
     <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
+    <div class="tk-item">🌊 Explore The South Water Park · thesouthwaterpark.com <span class="tk-dot"></span></div>
     <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
     <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
     <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
@@ -1641,6 +1647,7 @@ footer{
     <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
     <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
     <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
+    <div class="tk-item">🌊 Explore The South Water Park · thesouthwaterpark.com <span class="tk-dot"></span></div>
     <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
     <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
     <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
