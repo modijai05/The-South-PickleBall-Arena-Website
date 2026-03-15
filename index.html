@@ -538,6 +538,14 @@ section{position:relative;}
 .tc-rl{font-family:var(--fn-b);font-size:.75rem;font-weight:400;color:rgba(255,255,255,.45);}
 .tc-st{color:var(--red);font-size:.82rem;letter-spacing:2.5px;margin-top:3px;}
 
+/* ─── GLOWING REVIEW BUTTON ─── */
+.glow-btn{display:inline-flex;align-items:center;gap:12px;background:var(--green);border:2px solid var(--gl);border-radius:8px;padding:18px 32px;font-family:var(--fn-c);font-size:1rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#fff;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;box-shadow:0 0 20px rgba(45,125,70,.4),0 0 40px rgba(45,125,70,.3),0 0 60px rgba(45,125,70,.2);animation:glowPulse 2s ease-in-out infinite;}
+.glow-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 30px rgba(45,125,70,.6),0 0 60px rgba(45,125,70,.5),0 0 90px rgba(45,125,70,.3);}
+.glow-btn svg{width:22px;height:22px;flex-shrink:0;}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(45,125,70,.4),0 0 40px rgba(45,125,70,.3),0 0 60px rgba(45,125,70,.2);}50%{box-shadow:0 0 30px rgba(45,125,70,.7),0 0 60px rgba(45,125,70,.5),0 0 90px rgba(45,125,70,.3);}}
+.review-wrap{text-align:center;margin-top:48px;padding:32px;background:var(--nd);border-radius:12px;border:1px solid rgba(45,125,70,.2);}
+.review-title{font-family:var(--fn-h);font-size:.9rem;letter-spacing:3px;text-transform:uppercase;color:var(--gh);margin-bottom:16px;}
+
 /* ─── CONTACT ─── */
 #contact{background:var(--nd);}
 .cg{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
@@ -1273,6 +1281,15 @@ footer{
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Glowing Google Review Button -->
+    <div class="review-wrap rv">
+      <div class="review-title">Love your experience?</div>
+      <a href="https://g.page/r/CbByA131Szi5EBM/review" target="_blank" class="glow-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.88-11.71L10 14.17l-1.88-1.88a.996.996 0 1 0-1.41 1.41l2.59 2.59c.39.39 1.02.39 1.41 0L17.3 9.7a.996.996 0 0 0-1.41-1.41z"/></svg>
+        Leave a Google Review
+      </a>
     </div>
   </div>
 </section>
