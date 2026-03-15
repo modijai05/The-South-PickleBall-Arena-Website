@@ -94,26 +94,26 @@ video{transform:translateZ(0);backface-visibility:hidden;}
 
 /* GLOWING NAV BOOK BTN */
 .btn-nav-book{
-  font-family:var(--fn-c);font-size:.82rem;font-weight:900;
-  letter-spacing:2px;text-transform:uppercase;
+  font-family:var(--fn-c);font-size:1.4rem;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase;
   background:linear-gradient(135deg,var(--green),var(--gl));
-  color:#fff;padding:12px 26px;border-radius:4px;
+  color:#fff;padding:18px 36px;border-radius:8px;
   border:none;cursor:pointer;position:relative;overflow:hidden;
   flex-shrink:0;
   animation:navGlow 2.5s ease-in-out infinite;
   transition:transform .2s;
 }
 @keyframes navGlow{
-  0%,100%{box-shadow:0 0 16px rgba(45,125,70,.55),0 0 32px rgba(45,125,70,.25);}
-  50%{box-shadow:0 0 26px rgba(77,184,104,.85),0 0 50px rgba(45,125,70,.45);}
+  0%,100%{box-shadow:0 0 25px rgba(45,125,70,.8),0 0 50px rgba(45,125,70,.5);}
+  50%{box-shadow:0 0 40px rgba(77,184,104,1),0 0 80px rgba(45,125,70,.7);}
 }
 .btn-nav-book::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
   transform:translateX(-100%);animation:sweep 2.8s ease-in-out infinite;
 }
 @keyframes sweep{0%,40%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
-.btn-nav-book:hover{transform:translateY(-2px) scale(1.04);}
+.btn-nav-book:hover{transform:translateY(-4px) scale(1.15);}
 
 /* CALL NOW NAV BUTTON */
 .btn-nav-call{
@@ -375,7 +375,7 @@ section{position:relative;}
   display:flex;align-items:center;gap:14px;
   background:linear-gradient(90deg,rgba(200,41,58,.12),rgba(13,30,58,.5));
   border-left:4px solid var(--red);border-radius:0 6px 6px 0;
-  padding:16px 20px;margin-bottom:28px;
+  padding:14px 22px;margin-bottom:28px;
 }
 .cn-icon{font-size:1.6rem;flex-shrink:0;}
 .cn-text{font-family:var(--fn-h);font-size:.85rem;font-weight:600;letter-spacing:.8px;color:#fff;line-height:1.5;}
@@ -704,7 +704,7 @@ section{position:relative;}
 /* ─── SOUTH WATER PARK GLOWING POPUP ─── */
 .waterpark-popup{
   position:fixed;
-  bottom:170px;
+  bottom:360px;
   right:28px;
   z-index:799;
   background:linear-gradient(135deg,rgba(30,136,229,.95),rgba(21,101,192,.95));
@@ -783,7 +783,7 @@ section{position:relative;}
 @media(max-width:768px){
   .waterpark-popup{
     right:16px;
-    bottom:160px;
+    bottom:190px;
     padding:12px 14px;
     max-width:160px;
   }
@@ -1528,7 +1528,7 @@ footer{
 
 <!-- ═══ SOUTH WATER PARK GLOWING POPUP ═══ -->
 <a href="https://thesouthwaterpark.com/" target="_blank" rel="noopener noreferrer" class="waterpark-popup" title="Explore The South Water Park">
-  <img src="logo.png" alt="The South Water Park" class="waterpark-logo-img" onerror="this.style.display='none'">
+  <img src="The south Logo.png" alt="The South Water Park" class="waterpark-logo-img" onerror="this.src='logo.png';this.onerror=null;">
   <div class="waterpark-text">The South Water Park</div>
   <div class="waterpark-link">
     Explore Now
@@ -1638,7 +1638,7 @@ footer{
     <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
     <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
     <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
-    <div class="tk-item">🌊 Explore The South Water Park · thesouthwaterpark.com <span class="tk-dot"></span></div>
+    <div class="tk-item"><img src="The south Logo.png" alt="The South" style="height:24px;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1);"> The South Water Park <span class="tk-dot"></span></div>
     <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
     <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
     <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
@@ -1647,7 +1647,7 @@ footer{
     <div class="tk-item">🏓 We Are Open Now! <span class="tk-dot"></span></div>
     <div class="tk-item">The South PickleBall Arena · Jaipur <span class="tk-dot"></span></div>
     <div class="tk-item">📍 Inside The South Water Park · Goner Road <span class="tk-dot"></span></div>
-    <div class="tk-item">🌊 Explore The South Water Park · thesouthwaterpark.com <span class="tk-dot"></span></div>
+    <div class="tk-item"><img src="The south Logo.png" alt="The South" style="height:24px;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1);"> The South Water Park <span class="tk-dot"></span></div>
     <div class="tk-item">⚡ Book via WhatsApp or HuddlePlay <span class="tk-dot"></span></div>
     <div class="tk-item">🌅 Open 6 AM – 10 PM · All 7 Days <span class="tk-dot"></span></div>
     <div class="tk-item">🏆 1 Premium Standard Court <span class="tk-dot"></span></div>
