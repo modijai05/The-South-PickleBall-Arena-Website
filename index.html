@@ -747,6 +747,11 @@ footer{
 /* Bold footer copyright */
 .f-copy{font-family:var(--fn-c);font-size:.85rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.55);}
 
+/* ─── CUSTOM PICKLEBALL CURSOR ─── */
+.pickle-cursor{position:fixed;width:32px;height:32px;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s ease-out;mix-blend-mode:difference;}
+.pickle-cursor svg{width:100%;height:100%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+@media(max-width:768px){.pickle-cursor{display:none;}}
+
 /* ─── TICKER ─── */
 .ticker{
   position:fixed;bottom:0;left:0;right:0;z-index:900;
@@ -814,6 +819,22 @@ footer{
 </style>
 </head>
 <body>
+
+<!-- ═══ CUSTOM PICKLEBALL CURSOR ═══ -->
+<div class="pickle-cursor" id="pickleCursor">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="14" fill="white" stroke="#C8293A" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="2" fill="#C8293A"/>
+    <circle cx="10" cy="10" r="1.5" fill="#C8293A"/>
+    <circle cx="22" cy="10" r="1.5" fill="#C8293A"/>
+    <circle cx="10" cy="22" r="1.5" fill="#C8293A"/>
+    <circle cx="22" cy="22" r="1.5" fill="#C8293A"/>
+    <circle cx="16" cy="6" r="1.5" fill="#C8293A"/>
+    <circle cx="16" cy="26" r="1.5" fill="#C8293A"/>
+    <circle cx="6" cy="16" r="1.5" fill="#C8293A"/>
+    <circle cx="26" cy="16" r="1.5" fill="#C8293A"/>
+  </svg>
+</div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
@@ -1643,6 +1664,12 @@ function closeLightbox(e){
   }
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lightbox').classList.remove('on');document.body.style.overflow='';});
+/* PICKLEBALL CURSOR */
+const pickleCursor=document.getElementById('pickleCursor');
+let cursorX=0,cursorY=0,currentX=0,currentY=0;
+document.addEventListener('mousemove',e=>{cursorX=e.clientX;cursorY=e.clientY;},false);
+function animateCursor(){currentX+=(cursorX-currentX)*.15;currentY+=(cursorY-currentY)*.15;pickleCursor.style.left=currentX+'px';pickleCursor.style.top=currentY+'px';requestAnimationFrame(animateCursor);}
+animateCursor();
 </script>
 </body>
 </html>
