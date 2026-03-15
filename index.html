@@ -701,7 +701,90 @@ section{position:relative;}
 }
 @keyframes lblBlink{0%,100%{opacity:1;}50%{opacity:.6;}}
 
-/* ─── FOOTER ─── */
+/* ─── SOUTH WATER PARK GLOWING POPUP ─── */
+.waterpark-popup{
+  position:fixed;
+  bottom:130px;
+  right:28px;
+  z-index:799;
+  background:linear-gradient(135deg,rgba(30,136,229,.95),rgba(21,101,192,.95));
+  border:2px solid rgba(100,181,246,.6);
+  border-radius:12px;
+  padding:14px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 0 20px rgba(30,136,229,.5),0 0 40px rgba(21,101,192,.3),inset 0 0 20px rgba(100,181,246,.2);
+  animation:waterparkGlow 2s ease-in-out infinite, waterparkBounce 3s ease-in-out infinite;
+  cursor:pointer;
+  transition:transform .3s,box-shadow .3s;
+  max-width:180px;
+  text-align:center;
+}
+.waterpark-popup:hover{
+  transform:scale(1.05) translateY(-4px);
+  box-shadow:0 0 30px rgba(30,136,229,.7),0 0 60px rgba(21,101,192,.5),inset 0 0 30px rgba(100,181,246,.3);
+}
+.waterpark-popup::before{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  right:24px;
+  width:0;
+  height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-top:10px solid rgba(30,136,229,.95);
+}
+@keyframes waterparkGlow{
+  0%,100%{box-shadow:0 0 20px rgba(30,136,229,.5),0 0 40px rgba(21,101,192,.3),inset 0 0 20px rgba(100,181,246,.2);}
+  50%{box-shadow:0 0 30px rgba(30,136,229,.8),0 0 60px rgba(21,101,192,.5),inset 0 0 30px rgba(100,181,246,.4);}
+}
+@keyframes waterparkBounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+.waterpark-icon{
+  font-size:1.8rem;
+  animation:waveIcon 2s ease-in-out infinite;
+}
+@keyframes waveIcon{
+  0%,100%{transform:rotate(-5deg);}
+  50%{transform:rotate(5deg);}
+}
+.waterpark-text{
+  font-family:var(--fn-c);
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#fff;
+  line-height:1.3;
+  text-shadow:0 2px 4px rgba(0,0,0,.3);
+}
+.waterpark-link{
+  font-family:var(--fn-b);
+  font-size:.65rem;
+  font-weight:600;
+  color:rgba(255,255,255,.85);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  transition:color .2s;
+}
+.waterpark-link:hover{color:#fff;}
+.waterpark-link svg{width:12px;height:12px;fill:currentColor;}
+@media(max-width:768px){
+  .waterpark-popup{
+    right:16px;
+    bottom:128px;
+    padding:12px 14px;
+    max-width:160px;
+  }
+  .waterpark-text{font-size:.7rem;}
+}
 footer{
   position:relative;overflow:hidden;
   min-height:440px;display:flex;flex-direction:column;
@@ -1437,6 +1520,16 @@ footer{
     </div>
   </div>
 </div>
+
+<!-- ═══ SOUTH WATER PARK GLOWING POPUP ═══ -->
+<a href="https://thesouthwaterpark.com/" target="_blank" rel="noopener noreferrer" class="waterpark-popup" title="Explore The South Water Park">
+  <div class="waterpark-icon">🌊</div>
+  <div class="waterpark-text">The South Water Park</div>
+  <div class="waterpark-link">
+    Explore Now
+    <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+  </div>
+</a>
 
 <!-- ═══ FLOATING BOOK BTN (BRAND LOGO) ═══ -->
 <div id="float-book">
