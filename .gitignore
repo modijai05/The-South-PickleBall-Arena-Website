@@ -33,3 +33,6 @@ pids
 
 # HEIC source files (converted to JPG)
 *.HEIC
+
+# Local Netlify folder
+.netlify

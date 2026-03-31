@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The South PickleBall Arena – Jaipur</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════
    BRAND COLORS from logo
@@ -910,7 +911,7 @@ footer{
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
   <div class="nav-brand">
-    <img src="logo.png" alt="Logo" class="nav-logo-img"
+    <img src="logo.png" alt="Logo" class="nav-logo-img" loading="lazy"
          onerror="this.src='3.png';this.onerror=null;">
     <div class="nav-wm">
       <div class="nav-wm-main">The South PickleBall Arena</div>
@@ -956,7 +957,7 @@ footer{
 <!-- ═══ HERO ═══ -->
 <section id="home">
   <div class="hvw">
-    <video autoplay muted loop playsinline preload="auto" id="heroVid">
+    <video autoplay muted loop playsinline preload="metadata" id="heroVid">
       <source src="A1.mp4" type="video/mp4">
     </video>
   </div>
@@ -1082,7 +1083,7 @@ footer{
           <div class="orb orb1"></div>
           <div class="orb orb2"></div>
           <div class="orb orb3"></div>
-          <img src="logo.png" alt="The South PickleBall Arena" class="ali"
+          <img src="logo.png" alt="The South PickleBall Arena" class="ali" loading="lazy"
                onerror="this.src='3.png';this.onerror=null;">
         </div>
       </div>
@@ -1286,7 +1287,7 @@ footer{
     <div class="gal-grid rv">
       <div class="gi" onclick="openLightbox('1.jpg','Main Court')">
         <div class="gi-inner">
-          <img class="gi-img" src="1.jpg" alt="Main Court" onerror="this.style.display='none'">
+          <img class="gi-img" src="1.jpg" alt="Main Court" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="gi-ov"></div>
         <div class="gi-info"><div class="gi-nm">Premium Arena Floor</div><div class="gi-sub">Our 1 professional pickleball court</div></div>
@@ -1294,7 +1295,7 @@ footer{
       </div>
       <div class="gi" onclick="openLightbox('2.jpg','Night Sessions')">
         <div class="gi-inner" style="background:linear-gradient(135deg,#0c1e3e,#1B3A6B);">
-          <img class="gi-img" src="2.jpg" alt="Night" onerror="this.style.display='none'">
+          <img class="gi-img" src="2.jpg" alt="Night" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="gi-ov"></div>
         <div class="gi-info"><div class="gi-nm">Night Lighting</div><div class="gi-sub">Play till 10 PM under floodlights</div></div>
@@ -1302,7 +1303,7 @@ footer{
       </div>
       <div class="gi" onclick="openLightbox('3.jpg','Equipment')">
         <div class="gi-inner" style="background:linear-gradient(135deg,#0a1e10,#142e1a);">
-          <img class="gi-img" src="3.jpg" alt="Equipment" onerror="this.style.display='none'">
+          <img class="gi-img" src="3.jpg" alt="Equipment" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="gi-ov"></div>
         <div class="gi-info"><div class="gi-nm">Pro Equipment</div><div class="gi-sub">Paddles &amp; balls on request</div></div>
@@ -1310,7 +1311,7 @@ footer{
       </div>
       <div class="gi" onclick="openLightbox('4.jpg','Events')">
         <div class="gi-inner" style="background:linear-gradient(135deg,#1e0a10,#2e1018);">
-          <img class="gi-img" src="4.jpg" alt="Events" onerror="this.style.display='none'">
+          <img class="gi-img" src="4.jpg" alt="Events" loading="lazy" onerror="this.style.display='none'">
         </div>
         <div class="gi-ov"></div>
         <div class="gi-info"><div class="gi-nm">Tournament Events</div><div class="gi-sub">Competitive matches &amp; events</div></div>
@@ -1440,7 +1441,7 @@ footer{
       <div class="rr">
         <div class="map-wrap">
           <div class="map-header">
-            <img src="logo.png" alt="Logo" class="map-h-logo" onerror="this.src='3.png';this.onerror=null;">
+            <img src="logo.png" alt="Logo" class="map-h-logo" loading="lazy" onerror="this.src='3.png';this.onerror=null;">
             <div class="map-h-info">
               <div class="map-h-name">The South PickleBall Arena</div>
               <div class="map-h-addr">68/2 Inside The South Water Park · Goner Road · Sitapura · Jaipur 302022</div>
@@ -1542,7 +1543,7 @@ footer{
     <div class="float-ring"></div>
   </div>
   <button class="float-btn" onclick="openBook()" title="Book a Court Now">
-    <img src="logo.png" alt="Book Now"
+    <img src="logo.png" alt="Book Now" loading="lazy"
          onerror="this.style.display='none';this.nextSibling.style.display='block';">
     <span class="float-btn-fallback" style="display:none;">🏓</span>
   </button>
@@ -1552,7 +1553,7 @@ footer{
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="fvid">
-    <video autoplay muted loop playsinline preload="auto">
+    <video autoplay muted loop playsinline preload="metadata">
       <source src="A1.mp4" type="video/mp4">
     </video>
     <div class="fvid-ov"></div>
@@ -1655,9 +1656,28 @@ footer{
 </div>
 
 <script>
-/* NAV SCROLL */
+/* PERFORMANCE OPTIMIZATIONS */
+let ticking=false;
+function requestTick(callback){
+  if(!ticking){
+    requestAnimationFrame(callback);
+    ticking=true;
+    setTimeout(()=>ticking=false,16);
+  }
+}
+
+/* NAV SCROLL - DEBOUNCED */
+let lastScrollY=0;
+let scrollTimer=null;
 window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('solid',scrollY>60);
+  clearTimeout(scrollTimer);
+  scrollTimer=setTimeout(()=>{
+    const currentScrollY=scrollY;
+    if(Math.abs(currentScrollY-lastScrollY)>5){
+      document.getElementById('nav').classList.toggle('solid',currentScrollY>60);
+      lastScrollY=currentScrollY;
+    }
+  },10);
 },{passive:true});
 
 /* MOBILE MENU */
@@ -1684,40 +1704,80 @@ document.getElementById('overlay').addEventListener('click',function(e){
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBook();});
 
-/* SMOOTH SCROLL */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
+/* SMOOTH SCROLL - OPTIMIZED */
+const smoothScrollLinks=document.querySelectorAll('a[href^="#"]');
+const smoothScrollObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const link=document.querySelector(`a[href="#${entry.target.id}"]`);
+      if(link)link.classList.add('active');
+    }
+  });
+},{threshold:0.5});
+
+smoothScrollLinks.forEach(a=>{
   a.addEventListener('click',function(e){
     const t=document.querySelector(this.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    if(t){
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+    }
   });
 });
 
-/* SCROLL REVEAL */
+/* SCROLL REVEAL - OPTIMIZED */
 const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  entries.forEach(e=>{
+    if(e.isIntersecting && !e.target.classList.contains('in')){
+      e.target.classList.add('in');
+      ro.unobserve(e.target);
+    }
+  });
 },{threshold:0.07,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.rv,.rl,.rr').forEach(el=>ro.observe(el));
 
-/* HERO ENTRANCE */
+/* HERO ENTRANCE - OPTIMIZED */
 window.addEventListener('load',()=>{
-  [['.h-badge',.15],['.hero-h1 .hl1',.28],['.hero-h1 .hl2',.42],
-   ['.hero-h1 .hl3',.54],['.h-sub',.66],['.hbtns',.78],['.hstats',.9]
-  ].forEach(([s,d])=>{
-    const el=document.querySelector(s);if(!el)return;
-    el.style.cssText=`opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;transition-delay:${d}s;`;
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateY(0)';}));
+  const elements=[
+    {selector:'.h-badge',delay:0.15},
+    {selector:'.hero-h1 .hl1',delay:0.28},
+    {selector:'.hero-h1 .hl2',delay:0.42},
+    {selector:'.hero-h1 .hl3',delay:0.54},
+    {selector:'.h-sub',delay:0.66},
+    {selector:'.hbtns',delay:0.78},
+    {selector:'.hstats',delay:0.9}
+  ];
+  
+  elements.forEach(({selector,delay})=>{
+    const el=document.querySelector(selector);
+    if(!el)return;
+    el.style.cssText=`opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;transition-delay:${delay}s;`;
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        el.style.opacity='1';
+        el.style.transform='translateY(0)';
+      });
+    });
   });
+  
   const v=document.getElementById('heroVid');
   if(v)v.play().catch(()=>{});
 });
 
-/* FLOATING BUTTON show/hide */
+/* FLOATING BUTTON - THROTTLED */
 const fb=document.getElementById('float-book');
+let fbScrollTimer=null;
 window.addEventListener('scroll',()=>{
-  scrollY>200?fb.classList.add('show'):fb.classList.remove('show');
+  if(fbScrollTimer)return;
+  fbScrollTimer=setTimeout(()=>{
+    requestTick(()=>{
+      scrollY>200?fb.classList.add('show'):fb.classList.remove('show');
+      fbScrollTimer=null;
+    });
+  },50);
 },{passive:true});
 
-/* SOCIAL ICONS stagger pop */
+/* SOCIAL ICONS stagger pop - OPTIMIZED */
 const socObs=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -1729,15 +1789,29 @@ const socObs=new IntersectionObserver(entries=>{
   });
 },{threshold:0.2});
 document.querySelectorAll('.soc-grid,.f-soc-row').forEach(el=>socObs.observe(el));
-/* LIGHTBOX */
+
+/* LIGHTBOX - OPTIMIZED */
+let lightboxImage=null;
 function openLightbox(src,caption){
   const lb=document.getElementById('lightbox');
   const img=document.getElementById('lightboxImg');
   const cap=document.getElementById('lightboxCaption');
-  img.src=src;
-  cap.textContent=caption;
-  lb.classList.add('on');
-  document.body.style.overflow='hidden';
+  
+  if(!lightboxImage){
+    lightboxImage=new Image();
+    lightboxImage.onload=()=>{
+      img.src=src;
+      cap.textContent=caption;
+      lb.classList.add('on');
+      document.body.style.overflow='hidden';
+    };
+    lightboxImage.src=src;
+  }else{
+    img.src=src;
+    cap.textContent=caption;
+    lb.classList.add('on');
+    document.body.style.overflow='hidden';
+  }
 }
 function closeLightbox(e){
   if(e.target.id==='lightbox'||e.target.classList.contains('lightbox-close')){
@@ -1746,7 +1820,12 @@ function closeLightbox(e){
     setTimeout(()=>{document.getElementById('lightboxImg').src='';},300);
   }
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('lightbox').classList.remove('on');document.body.style.overflow='';});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.getElementById('lightbox').classList.remove('on');
+    document.body.style.overflow='';
+  }
+});
 </script>
 </body>
 </html>
